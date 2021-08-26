@@ -1,0 +1,130 @@
+/*login, register*/
+
+main {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#card-top {
+    background-color: #ECE9E9;
+    height: 50px;
+}
+
+#login {
+    background-color: #0BA70B;
+    width: 100%;
+}
+
+#register {
+    margin-top: 15px;
+}
+
+
+/*edit,view,form content*/
+
+#navbar {
+    border-bottom: 1px solid #D3D3D3;
+}
+
+#sidebar {
+    background-color: #F5F5F5;
+    border-right: 1px solid #DBDADA;
+}
+
+.search {
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #F5F5F5;
+}
+
+#searchbutton {
+    border: 1px solid #E9E6E6;
+    background-color: #FFFFFF;
+}
+
+#list {
+    width: 105%;
+}
+
+#list a {
+    background-color: #F5F5F5;
+    color: #12B2F1;
+    border-bottom: 1px solid #DBDADA;
+}
+
+.content {
+    padding: 40px;
+}
+
+.form {
+    border: 2px solid #E9E9E9;
+    border-radius: 5px;
+}
+
+.form-header {
+    border-radius: 5px;
+    background-color: #E9E9E9;
+    height: 40px;
+    border-bottom: 1px solid #F0F0F0;
+    padding: 10px;
+}
+
+.table-content {
+    padding: 20px;
+}
+
+#table td,
+#table th {
+    border: 1px solid #E2E1E1;
+    vertical-align: top;
+    text-align: left;
+    padding: 5px;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    /* Sit on top */
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 40%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    /* Could be more or less, depending on screen size */
+}
+
+
+/* Add Zoom Animation */
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+.error {
+    color: red;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <main>
+        <div class="card border p-4" style="width: 350px;">
+            <div class="card-title" id="card-top">
+                <p class="m-3">Please Sign In</p>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/j_spring_security_check}" method="POST">
+                	
+					<div th:if="${param.success != null}" class="alert alert-danger" role="alert">
+					Login fail!
+					</div>
+                    <div class="mb-3">
+                        <input type="text" required class="form-control" id="username" name="username" placeholder="Username" size="50">
+                        <p class="error" id="error-email"></p>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" required class="form-control" id="password" name="password" placeholder="Password" size="50">
+                        <p class="error" id="error-password"></p>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="checkremember">
+                        <label class="form-check-label" for="checkremember">Remember Me</label>
+                    </div>
+                    <button id="login" type="submit" class="btn-primary">Login</button>
+                    <div id="register" class="mb-3">
+                        <a href="/register" style="text-decoration: none;" class="text-info">Click here to Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
