@@ -16,9 +16,9 @@ public interface ScoreService {
 	public List<Score> getListSemester();
 	public List<Score> getAll();
 	public List<Score> getListScoreByIdSubject(String subjectId);
-	public List<Score> getListScoreByIdSemester(String semesterId);
-	public List<Score> getListScoreByIdSemesterAndIdSubject(String semesterId, String subjectId);
+	public List<Score> getListScoreBySemesterName(String semester);
+	public List<Score> getListScoreByNameSemesterAndIdSubject(String semesterName, String subjectId);
 	public Score getScoreById(String id);
 	public List<Score> getListSemesterByIdUser(String account_id);
-	public List<Score> getListScoreByIdSemesterAndAccountId(String semesrer_id, String account_id);
+	public List<Score> getListScoreByNameSemesterAndAccountId(String semesrerName, String account_id);
 }

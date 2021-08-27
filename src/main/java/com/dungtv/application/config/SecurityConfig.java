@@ -27,14 +27,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/admin/**").hasAuthority("ADMIN")
-		.antMatchers("/", "/register", "/registerOrUpdateAccount", "/css/**", "./css/**").permitAll().anyRequest()
+		http.authorizeRequests()
+		.antMatchers("/admin/**").hasAuthority("ADMIN")
+		.antMatchers("/", "/register", "/registerOrUpdateAccount", "/css/**", "/h2-console/**").permitAll().anyRequest()
 				.authenticated().and().formLogin().loginPage("/login").permitAll()
 				.defaultSuccessUrl("/loginSuccess")
 				.failureUrl("/login?success=fail").loginProcessingUrl("/j_spring_security_check").and().logout()
 				.invalidateHttpSession(true).clearAuthentication(true)
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll()
 				.and().exceptionHandling().accessDeniedPage("/403");
+		//http.authorizeRequests().anyRequest().permitAll();
 	}
 
 	@Override

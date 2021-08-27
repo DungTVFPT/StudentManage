@@ -91,10 +91,9 @@
 							<div>
 								<div style="float: left;">
 									<label>Chọn kỳ học</label><br> <select id="ddl1"
-										name="semesterId">
-										<option value="all">Tat ca</option>
+										name="semester">
 										<th:block th:each="item : ${list}">
-											<option th:value="${item.semesterId}"
+											<option th:value="${item.semester}"
 												th:text="${item.semester}"></option>
 										</th:block>
 									</select>

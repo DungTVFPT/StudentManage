@@ -46,12 +46,12 @@ public class ScoreServiceImpl implements ScoreService{
 		return scoreRepository.getListScoreByIdSubject(subjectId);
 	}
 	@Override
-	public List<Score> getListScoreByIdSemester(String semesterId) {
-		return scoreRepository.getListScoreByIdSemester(semesterId);
+	public List<Score> getListScoreBySemesterName(String semesterId) {
+		return scoreRepository.getListScoreBySemesterName(semesterId);
 	}
 	@Override
-	public List<Score> getListScoreByIdSemesterAndIdSubject(String semesterId, String subjectId) {
-		return scoreRepository.getListScoreByIdSemesterAndIdSubject(semesterId, subjectId);
+	public List<Score> getListScoreByNameSemesterAndIdSubject(String semesterName, String subjectId) {
+		return scoreRepository.getListScoreByNameSemesterAndIdSubject(semesterName, subjectId);
 	}
 	@Override
 	public Score getScoreById(String id) {
@@ -62,8 +62,8 @@ public class ScoreServiceImpl implements ScoreService{
 		return scoreRepository.getListSemesterByIdUser(account_id);
 	}
 	@Override
-	public List<Score> getListScoreByIdSemesterAndAccountId(String semesrer_id, String account_id) {
-		return scoreRepository.getListScoreByIdSemesterAndAccountId(semesrer_id, account_id);
+	public List<Score> getListScoreByNameSemesterAndAccountId(String semesrerName, String account_id) {
+		return scoreRepository.getListScoreByNameSemesterAndAccountId(semesrerName, account_id);
 	}
 
 }

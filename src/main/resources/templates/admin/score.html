@@ -213,8 +213,8 @@ main {
 						</div>
 						<div hidden="" class=" form-group ">
 							<input type="text" class="form-control " name="id" id="idScore">
-							<input type="text" class="form-control " name="semesterId"
-								th:value="${param.semesterId}"> 
+							<input type="text" class="form-control " name="semester"
+								th:value="${param.semester}"> 
 							<input type="text" class="form-control " name="subjectId"
 								th:value="${param.subjectId}">
 						</div>
@@ -253,10 +253,10 @@ main {
 								<div>
 									<div style="float: left;">
 										<label>Chọn kỳ học</label><br> <select id="ddl1"
-											name="semesterId">
+											name="semester">
 											<option value="all">Tat ca</option>
 											<th:block th:each="item : ${listSemester}">
-												<option th:value="${item.semesterId}"
+												<option th:value="${item.semester}"
 													th:text="${item.semester}"></option>
 											</th:block>
 										</select>

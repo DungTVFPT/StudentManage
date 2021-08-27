@@ -27,7 +27,7 @@ public interface ScoreRepository extends JpaRepository<Score, String>{
 	@Query(value = "SELECT * FROM tbl_score WHERE account_id = ?1 and status_register = 0", nativeQuery = true)
 	List<Score> getListRegisteredSubjectByIdUser(String account_id);
 	@Transactional    
-	@Query(value = "SELECT * FROM tbl_score group by semester_id", nativeQuery = true)
+	@Query(value = "SELECT * FROM tbl_score group by semester", nativeQuery = true)
 	List<Score> getListSemester();
 	@Transactional    
 	@Query(value = "SELECT * FROM tbl_score WHERE status_register = 0 order by semester", nativeQuery = true)
@@ -36,14 +36,14 @@ public interface ScoreRepository extends JpaRepository<Score, String>{
 	@Query(value = "SELECT * FROM tbl_score WHERE subject_id = ?1 and status_register = 0 order by semester", nativeQuery = true)
 	List<Score> getListScoreByIdSubject(String subject_id);
 	@Transactional 
-	@Query(value = "SELECT * FROM tbl_score WHERE semester_id = ?1 and status_register = 0 order by semester", nativeQuery = true)
-	List<Score> getListScoreByIdSemester(String semester_id);
+	@Query(value = "SELECT * FROM tbl_score WHERE semester = ?1 and status_register = 0", nativeQuery = true)
+	List<Score> getListScoreBySemesterName(String semester);
 	@Transactional 
-	@Query(value = "SELECT * FROM tbl_score WHERE semester_id = ?1 and subject_id = ?2 and status_register = 0 order by semester", nativeQuery = true)
-	List<Score> getListScoreByIdSemesterAndIdSubject(String semester_id, String subject_id);
+	@Query(value = "SELECT * FROM tbl_score WHERE semester = ?1 and subject_id = ?2 and status_register = 0 order by semester", nativeQuery = true)
+	List<Score> getListScoreByNameSemesterAndIdSubject(String semester, String subject_id);
 	@Transactional 
-	@Query(value = "SELECT * FROM tbl_score WHERE account_id = ?1 and status_register = 0 order by semester", nativeQuery = true)
+	@Query(value = "SELECT * FROM tbl_score WHERE account_id = ?1 and status_register = 0 group by semester", nativeQuery = true)
 	List<Score> getListSemesterByIdUser(String account_id);
-	@Query(value = "SELECT * FROM tbl_score WHERE semester_id = ?1 and account_id = ?2 and status_register = 0 order by semester", nativeQuery = true)
-	List<Score> getListScoreByIdSemesterAndAccountId(String semester_id, String account_id);
+	@Query(value = "SELECT * FROM tbl_score WHERE semester = ?1 and account_id = ?2 and status_register = 0 order by semester", nativeQuery = true)
+	List<Score> getListScoreByNameSemesterAndAccountId(String semester, String account_id);
 }

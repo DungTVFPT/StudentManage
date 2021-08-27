@@ -41,22 +41,22 @@ public class ScoreController {
 	}
 
 	@RequestMapping(value = "/admin/score/search")
-	public String scoreSearch(@RequestParam(name = "semesterId") String semesterId,
+	public String scoreSearch(@RequestParam(name = "semester") String semester,
 			@RequestParam(name = "subjectId") String subjectId, Model model) {
 		LOGGER.info("Admin score search page");
 		try {
 			List<Score> list = null;
-			if (semesterId.equalsIgnoreCase("all") && subjectId.equalsIgnoreCase("all")) {
+			if (semester.equalsIgnoreCase("all") && subjectId.equalsIgnoreCase("all")) {
 				list = scoreService.getAll();
 			}
-			if (semesterId.equalsIgnoreCase("all") && !subjectId.equalsIgnoreCase("all")) {
+			if (semester.equalsIgnoreCase("all") && !subjectId.equalsIgnoreCase("all")) {
 				list = scoreService.getListScoreByIdSubject(subjectId);
 			}
-			if (!semesterId.equalsIgnoreCase("all") && subjectId.equalsIgnoreCase("all")) {
-				list = scoreService.getListScoreByIdSemester(semesterId);
+			if (!semester.equalsIgnoreCase("all") && subjectId.equalsIgnoreCase("all")) {
+				list = scoreService.getListScoreBySemesterName(semester);
 			}
-			if (!semesterId.equalsIgnoreCase("all") && !subjectId.equalsIgnoreCase("all")) {
-				list = scoreService.getListScoreByIdSemesterAndIdSubject(semesterId, subjectId);
+			if (!semester.equalsIgnoreCase("all") && !subjectId.equalsIgnoreCase("all")) {
+				list = scoreService.getListScoreByNameSemesterAndIdSubject(semester, subjectId);
 			}
 			model.addAttribute("list", list);
 			return "forward:/admin/score";
@@ -69,7 +69,7 @@ public class ScoreController {
 	@RequestMapping(value = "/admin/score/update")
 	public String scoreUpdate(@RequestParam(name = "id") String id,
 			@RequestParam(name = "number") int number,
-			@RequestParam(name = "semesterId") String semesterId,
+			@RequestParam(name = "semester") String semester,
 			@RequestParam(name = "subjectId") String subjectId) {
 		LOGGER.info("Admin score update");
 		try {
@@ -78,7 +78,7 @@ public class ScoreController {
 				score.setScore(number);
 				scoreService.addOrUpdateScore(score);
 			}
-			return "redirect:/admin/score/search?semesterId="+semesterId+"&subjectId="+subjectId+"&updateSuccess=true";
+			return "redirect:/admin/score/search?semester="+semester+"&subjectId="+subjectId+"&updateSuccess=true";
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage());
 			return null;
@@ -102,14 +102,14 @@ public class ScoreController {
 		
 	}
 	@RequestMapping(value = "/score/search")
-	public String scoreUserSearch(@RequestParam(name = "semesterId") String semesterId, Model model) {
+	public String scoreUserSearch(@RequestParam(name = "semester") String semester, Model model) {
 		LOGGER.info("User score search");
 		try {
 			AccountPrincipal accountPrincipal =
 					 (AccountPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();	
 			List<Score> list = null;
-			if (!semesterId.equalsIgnoreCase("all")) {
-				list = scoreService.getListScoreByIdSemesterAndAccountId(semesterId, accountPrincipal.getAccount().getId());			
+			if (!semester.equalsIgnoreCase("all")) {
+				list = scoreService.getListScoreByNameSemesterAndAccountId(semester, accountPrincipal.getAccount().getId());			
 			}else {
 				list = scoreService.getListSemesterByIdUser(accountPrincipal.getAccount().getId());
 			}
